@@ -60,6 +60,16 @@ end
     ![image](https://github.com/Raynaril/Xilinx-virtex7-vc707/assets/67402948/24c41e76-d27a-45be-af6c-b135e90587cc)
 
     >解决方法：此类时序问题很有可能是由于自己所设置的 ILA 核的影响，所以在验证完功能且不需要观测信号后，应将所有 ILA 代码注释掉。其他可能的产生问题参考：[vivado 时序报错：建立时间和保持时间问题](https://blog.csdn.net/qq_38374491/article/details/117392772)
+    
+    >待定方法：直接忽略报错的时序路径 ( 仅用于由 ILA 核导致的 critical warning ) 不确定直接忽略是否会在某些情况下导致一些硬件调试时的问题，推荐还是将 ILA 代码注释掉。在 Open Implemented Design - Report Timing Summary 生成报告后找到时序标红的那一项 右键 Set False Path，Vivado 会自动生成相应的时序约束：
 
-
+    ```Verilog 
+    set_false_path -reset_path -from [get_pins u_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0] -to [get_pins {u_ila_top/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/D}]
+    set_false_path -reset_path -from [get_pins u_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0] -to [get_pins {u_ila_top/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/D}]
+    set_false_path -reset_path -from [get_pins u_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0] -to [get_pins {u_ila_top/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/D}]
+    set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+    set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+    set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+    connect_debug_port dbg_hub/clk [get_nets clk_50m]
+    ```
     
