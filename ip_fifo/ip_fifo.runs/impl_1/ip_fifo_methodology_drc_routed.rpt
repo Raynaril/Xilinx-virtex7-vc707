@@ -1,0 +1,52 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date         : Sun Jun 23 11:59:05 2024
+| Host         : LAPTOP-GQ71LV87 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file ip_fifo_methodology_drc_routed.rpt -pb ip_fifo_methodology_drc_routed.pb -rpx ip_fifo_methodology_drc_routed.rpx
+| Design       : ip_fifo
+| Device       : xc7vx485tffg1761-2
+| Speed File   : -2
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 3
++----------+------------------+-------------------------------------------------+------------+
+| Rule     | Severity         | Description                                     | Violations |
++----------+------------------+-------------------------------------------------+------------+
+| TIMING-2 | Critical Warning | Invalid primary clock source pin                | 1          |
+| LUTAR-1  | Warning          | LUT drives async reset alert                    | 1          |
+| PDRC-190 | Warning          | Suboptimally placed synchronized register chain | 1          |
++----------+------------------+-------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-2#1 Critical Warning
+Invalid primary clock source pin  
+A primary clock u_clk_wiz_0/inst/clk_in1 is created on an inappropriate pin u_clk_wiz_0/inst/clk_in1. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell u_fifo_wr/u_fifo_generator_0_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) count_reg[0]/CLR, count_reg[10]/CLR, count_reg[11]/CLR, count_reg[12]/CLR, count_reg[13]/CLR, count_reg[14]/CLR, count_reg[15]/CLR, count_reg[16]/CLR, count_reg[17]/CLR, count_reg[18]/CLR, count_reg[19]/CLR, count_reg[1]/CLR, count_reg[20]/CLR, count_reg[21]/CLR, count_reg[22]/CLR (the first 15 of 60 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+PDRC-190#1 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell u_fifo_generator_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X42Y156 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell u_fifo_generator_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+

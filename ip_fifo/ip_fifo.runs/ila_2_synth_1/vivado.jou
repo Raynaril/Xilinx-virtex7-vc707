@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Jun 21 14:19:18 2024
+# Process ID: 26044
+# Current directory: E:/Project/Verilog/Virtex7/ip_fifo/ip_fifo.runs/ila_2_synth_1
+# Command line: vivado.exe -log ila_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ila_2.tcl
+# Log file: E:/Project/Verilog/Virtex7/ip_fifo/ip_fifo.runs/ila_2_synth_1/ila_2.vds
+# Journal file: E:/Project/Verilog/Virtex7/ip_fifo/ip_fifo.runs/ila_2_synth_1\vivado.jou
+#-----------------------------------------------------------
+source ila_2.tcl -notrace

@@ -10,7 +10,7 @@
 module ip_clk(
         input       sys_clk_p, // vc707差分输入时钟 200Mhz
         input       sys_clk_n, 
-        input       rst      ,
+        input       rst      , // vc707复位 高有效
         output reg [7:0] led
     );
     // wire define
